@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   # root "articles#index"
     get '/', to: 'posts#new', as: 'new_post'
     get 'home/view', to: 'homes#index', as: 'index_home' 
-    get 'home/friends/follow', to: 'friends#follow', as: 'friends_follower'
+    get 'home/friend/follow', to: 'friends#follow', as: 'follow_friend'
 end

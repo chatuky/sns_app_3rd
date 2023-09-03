@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <%# bootstrapのcssを追加する %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <!-- Style -->
   <link rel="stylesheet" href="<%= mix('/css/app.css') %>">
   <!-- Javascript -->
@@ -13,44 +15,31 @@
   <!-- turbo.jsを追加します -->
   <script src="<%= mix('/js/turbo.js') %>"></script>
 </head>
-
 <body>
   <div class="main-container">
     <!--  ナビゲーションバー -->
-    <nav class="custom-navbar">
-      <div id="menuToggle">
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul id="menu">
-          <!-- ここから追加-->
-          <% if user_signed_in? %>
-            <!-- ログインしている場合に表示されます -->
-            <!-- user_signed_in? は device が提供している認証済みかを判定するメソッドです -->
-            <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
-            </li>
-            <li>
-              <%= link_to "home", index_home_path, class: "nav-link" %>
-            </li>
-            <li>
-              <%= link_to "friend", follow_friend_path, class: "nav-link" %>
-            </li>
-          <% else %>
-            <!-- ログインしていない場合に表示されます -->
-            <!-- else 以降は前述のif文の否定になります -->
-            <li>
-              <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
-            </li>
-          <% end %>
-          <!-- ここまで-->
+    <header class="header-container">
+      <div class="left">LOGO</div>
+      <div class="right">
+        <ul class="nav">
+          <li class="li">
+            <a href="https://school.omusubi-tech-academy.net/">
+              <img src="https://school.omusubi-tech-academy.net/icon/home.svg" alt="log" />
+            </a>
+          </li>
+          <li class="li">
+            <a href="/profile">
+              <%= image_tag 'icons/Vector.jpg' %>
+            </a>
+          </li>
+          <li class="li">
+            <a href="/friends">
+              <%= image_tag 'icons/users-solid1.jpg' %>
+            </a>
+          </li>
         </ul>
       </div>
-    </nav>
+    </header>
 
     <!-- アラートメッセージ -->
     <% if notice %>

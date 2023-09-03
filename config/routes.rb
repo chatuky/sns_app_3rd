@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
     get '/', to: 'posts#new', as: 'new_post'
     get 'home/view', to: 'homes#index', as: 'index_home' 
-    get 'home/friend/follow', to: 'friends#follow', as: 'follow_friend'
+    get 'friend', to: 'friends#follow', as: 'follow_friend'
+    get 'profile', to: 'profiles#info' , as: 'info_profile'
+    get 'search' , to: 'searches#name' , as: 'name_search'
 end

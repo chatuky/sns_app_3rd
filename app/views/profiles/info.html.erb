@@ -1,3 +1,85 @@
-<div>
-    <h1 class="title">ユーザープロフィール</h1>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto post-form-container">
+      <!-- ここから入れ替えて追加します-->
+      <!-- model: @post を追加しています -->
+      <%= form_with(url: create_post_path, model: @post, local: true, method: :post, html: { class: 'post-form' }) do |f| %>
+        <!-- バリデーションエラーメッセージ表示を追加しています -->
+        <% if @post.errors.any? %>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %> </ul>
+        <% end %>
+      <!-- ここまで -->
+      <div class="detail">
+        <img class="photo" src="https://i.pinimg.com/736x/fa/60/51/fa6051d72b821cb48a8cc71d3481dfef--social-networks-avatar.jpg" alt="user icon">
+        <p class="name">ユーザーネーム</p>
+        <p class="address">Tokyo, JAPAN</p>
+      </div>
+
+      <div class="posts-items">
+        <div class="post">
+          <p class="date">2023年8月30日</p>
+          <p class="text">米国株について話します。テキスト。テキスト。テキスト。テキスト。テキスト。テキスト。</p>
+          <div class="options">
+            <div class="like icon">
+              <img class="icon-image" src="https://icons.veryicon.com/png/o/miscellaneous/ui-basic-linear-icon/like-106.png" alt="like">
+              <p class="num">200</p>
+            </div>
+            <div class="edit icon">
+              <img class="icon-image" src="https://cdn-icons-png.flaticon.com/512/7398/7398464.png" arl="edit">
+            </div>
+          </div>
+        </div>
+
+        <div class="post">
+          <p class="date">2023年8月30日</p>
+          <p class="text">米国株について話します。テキスト。テキスト。テキスト。テキスト。テキスト。テキスト。米国株について話します。テキスト。テキスト。テキスト。テキスト。テキスト。テキスト。米国株について話します。テキスト。テキスト。テキスト。テキスト。テキスト。テキスト。米国株について話します。テキスト。テキスト。テキスト。テキスト。テキスト。テキスト。</p>
+          <div class="options">
+            <div class="like icon">
+              <img class="icon-image" src="https://icons.veryicon.com/png/o/miscellaneous/ui-basic-linear-icon/like-106.png" alt="like">
+              <p class="num">200</p>
+            </div>
+            <div class="edit icon">
+              <img class="icon-image" src="https://cdn-icons-png.flaticon.com/512/7398/7398464.png" arl="edit">
+            </div>
+          </div>
+        </div>
+
+        <div class="post">
+          <p class="date">2023年8月30日</p>
+          <p class="text">米国株について話します。テキスト。テキスト。テキスト。テキスト。テキスト。テキスト。</p>
+          <div class="options">
+            <div class="like icon">
+              <img class="icon-image" src="https://icons.veryicon.com/png/o/miscellaneous/ui-basic-linear-icon/like-106.png" alt="like">
+              <p class="num">200</p>
+            </div>
+            <div class="edit icon">
+              <img class="icon-image" src="https://cdn-icons-png.flaticon.com/512/7398/7398464.png" arl="edit">
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= form_with(url: create_profile_path, local: true, method: :post, html: { class: 'post-form' } ) do |f| %>
+        <div class="form-group">
+          <%= f.label "本文", class: 'form-label' %>
+          <%= f.text_area :body, class: 'form-control' %>
+        </div>
+
+        <div class="form-group image-upload">
+          <%= f.label "画像", class: 'form-label' %>
+          <div class="image-preview" id="imagePreview">
+            <img src="" alt="Image Preview" class="image-preview__image">
+            <span class="image-preview__default-text">Image will be displayed here</span>
+          </div>
+          <%= f.file_field :image, class: 'form-control-file', id: 'imageUpload' %>
+        </div>
+
+        <div class="button-group">
+          <%= f.submit '投稿する', class: 'btn btn-primary' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

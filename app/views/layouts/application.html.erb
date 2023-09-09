@@ -23,19 +23,26 @@
       <div class="right">
         <ul class="nav">
           <li class="li">
-            <a href="https://school.omusubi-tech-academy.net/">
-              <img src="https://school.omusubi-tech-academy.net/icon/home.svg" alt="log" />
-            </a>
+            <%= link_to index_home_path do %>
+            <%# <a href="https://school.omusubi-tech-academy.net/"> %>
+              <%= image_tag 'icons/home.png' %>
+              <%# <img src="https://school.omusubi-tech-academy.net/icon/home.svg" alt="log" /> %>
+            <% end %>
           </li>
           <li class="li">
-            <a href="/profile">
-              <%= image_tag 'icons/Vector.jpg' %>
-            </a>
+            <%= link_to info_profile_path do %>
+              <%= image_tag 'icons/Vector.png' %>
+            <% end %>
           </li>
           <li class="li">
-            <a href="/friends">
-              <%= image_tag 'icons/users-solid1.jpg' %>
-            </a>
+            <%= link_to follow_friend_path do %>
+              <%= image_tag 'icons/users-solid1.png' %>
+            <% end %>
+          </li>
+          <li class="li">
+            <%= link_to name_search_path do %>
+              <%= image_tag 'icons/magnify.png' %>
+            <% end %>
           </li>
         </ul>
       </div>
